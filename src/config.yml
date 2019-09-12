@@ -1,0 +1,4 @@
+global-tag-message: "&6You gave that item the global tag, %tag%."
+tag-message: "&6You gave that item the tag, %tag%."
+reset-tag-message: "&6You deleted that items global tag, %tag%."
+reset-tag-not-found-message: "&6This item does not have a global tag."

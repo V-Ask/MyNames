@@ -1,0 +1,17 @@
+main: com.r1ckp1ckle.mynames.MyNamesCore
+name: MyNames
+version: 1.0
+author: r1ckp1ckle
+commands:
+  tag:
+    usage: /<command> <name>
+    description: Gives the held item the given name
+    permission: mna.user
+  globaltag:
+    usage: /<command> <name>
+    description: Gives the held item the given name for all players
+    permission: mna.admin
+  resettag:
+    usage: /<command>
+    description: Removes the held item name for all players
+    permission: mna.admin
