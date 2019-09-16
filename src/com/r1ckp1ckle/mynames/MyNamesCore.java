@@ -1,5 +1,6 @@
 package com.r1ckp1ckle.mynames;
 
+import com.r1ckp1ckle.mynames.commands.AllTags;
 import com.r1ckp1ckle.mynames.commands.GlobalTag;
 import com.r1ckp1ckle.mynames.commands.ResetTag;
 import com.r1ckp1ckle.mynames.commands.Tag;
@@ -50,6 +51,7 @@ public class MyNamesCore extends JavaPlugin {
         getCommand("tag").setExecutor(new Tag());
         getCommand("globaltag").setExecutor(new GlobalTag());
         getCommand("resettag").setExecutor(new ResetTag());
+        getCommand("alltags").setExecutor(new AllTags());
     }
 
     public ConfigurationUtils getConfigurationUtils() {

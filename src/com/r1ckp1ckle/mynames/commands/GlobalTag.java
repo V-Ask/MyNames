@@ -21,6 +21,8 @@ public class GlobalTag implements CommandExecutor {
             ItemStack itemStack = player.getInventory().getItemInMainHand();
             ItemNamingUtils.GlobalNameStack(itemStack, ChatColor.translateAlternateColorCodes('&', joined), player);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', MyNamesCore.getInstance().getConfig().getString("global-tag-message").replace("%tag%", "\"" + ChatColor.stripColor(joined) + "\"")));
+        } else {
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', MyNamesCore.getInstance().getConfig().getString("not-holding-item-message")));
         }
         return true;
     }

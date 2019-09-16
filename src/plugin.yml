@@ -15,3 +15,7 @@ commands:
     usage: /<command>
     description: Removes the held item name for all players
     permission: mna.admin
+  alltags:
+    usage: /<command>
+    description: Shows all the global tags
+    permission: mna.admin

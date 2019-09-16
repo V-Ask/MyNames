@@ -23,6 +23,8 @@ public class ResetTag implements CommandExecutor {
             } else {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', MyNamesCore.getInstance().getConfig().getString("reset-tag-not-found-message")));
             }
+        } else {
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', MyNamesCore.getInstance().getConfig().getString("not-holding-item-message")));
         }
         return true;
     }
