@@ -8,7 +8,6 @@ import com.r1ckp1ckle.mynames.handler.NameChanger;
 import com.r1ckp1ckle.mynames.utils.ConfigurationUtils;
 import com.r1ckp1ckle.mynames.utils.ItemNamingUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.List;
 
 public class MyNamesCore extends JavaPlugin {
     private static MyNamesCore instance;
-    public List<Material> tweakedMats = new ArrayList<>();
+    public List<String> tweakedMats = new ArrayList<>();
     private ConfigurationUtils configurationUtils;
 
     public static MyNamesCore getInstance() {
@@ -58,7 +57,7 @@ public class MyNamesCore extends JavaPlugin {
         return configurationUtils;
     }
 
-    public List<Material> getTweakedMats() {
+    public List<String> getTweakedMats() {
         return tweakedMats;
     }
 }
