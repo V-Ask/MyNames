@@ -1,5 +1,5 @@
 global-tag-message: "&6MyNames: You gave that item the global tag, %tag%."
 tag-message: "&6MyNames: You gave that item the tag, %tag%."
 reset-tag-message: "&6MyNames: You deleted that items global tag, %tag%."
-reset-tag-not-found-message: "&MyNames: 6This item does not have a global tag."
+reset-tag-not-found-message: "&6MyNames: This item does not have a global tag."
 not-holding-item-message: "&6MyNames: You are not holding an item."

@@ -13,7 +13,7 @@ public class AllTags implements CommandExecutor {
         for (String key : MyNamesCore.getInstance().getConfigurationUtils().getData().getConfigurationSection("").getKeys(false)) {
             output += "\n" + ChatColor.stripColor(MyNamesCore.getInstance().getConfigurationUtils().getData().getString(key + ".tag") + " : " + MyNamesCore.getInstance().getConfigurationUtils().getData().getString(key + ".default-name"));
         }
-        commandSender.sendMessage(output);
+        commandSender.sendMessage(ChatColor.translateAlternateColorCodes('&', output));
         return true;
     }
 }

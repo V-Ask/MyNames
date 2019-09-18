@@ -8,7 +8,6 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 
 public class GlobalTag implements CommandExecutor {
     @Override
@@ -16,10 +15,10 @@ public class GlobalTag implements CommandExecutor {
         if (!(commandSender instanceof Player)) return true;
         Player player = (Player) commandSender;
         player.getInventory().getItemInMainHand();
+        System.out.println(player.getInventory().getItemInMainHand().getType().toString());
         if (!player.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
             String joined = String.join(" ", strings);
-            ItemStack itemStack = player.getInventory().getItemInMainHand();
-            ItemNamingUtils.GlobalNameStack(itemStack, ChatColor.translateAlternateColorCodes('&', joined), player);
+            ItemNamingUtils.GlobalNameStack(player.getInventory().getItemInMainHand(), ChatColor.translateAlternateColorCodes('&', joined), player);
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', MyNamesCore.getInstance().getConfig().getString("global-tag-message").replace("%tag%", "\"" + ChatColor.stripColor(joined) + "\"")));
         } else {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', MyNamesCore.getInstance().getConfig().getString("not-holding-item-message")));

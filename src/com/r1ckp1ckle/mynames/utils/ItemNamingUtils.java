@@ -30,27 +30,41 @@ public class ItemNamingUtils {
         player.getInventory().setItemInMainHand(CraftItemStack.asBukkitCopy(nmsStack));
     }
 
-    public static void DeleteNameStack(ItemStack itemStack) {
+    public static void DeleteNameStack(ItemStack itemStack, Player player) {
         ItemMeta meta = itemStack.getItemMeta();
         meta.setDisplayName(MyNamesCore.getInstance().getConfigurationUtils().getData().getString(itemStack.getType().toString() + "$" + itemStack.getData().toString() + ".default-name"));
         itemStack.setItemMeta(meta);
+        player.getInventory().setItemInMainHand(itemStack);
     }
 
     public static void DeleteGlobalNameStack(ItemStack itemStack, Player player) {
-        DeleteNameStack(itemStack);
+        DeleteNameStack(itemStack, player);
         MyNamesCore.getInstance().getConfigurationUtils().getData().set(itemStack.getType().toString() + "$" + itemStack.getData().toString(), null);
         MyNamesCore.getInstance().getConfigurationUtils().saveFiles();
         MyNamesCore.getInstance().getTweakedMats().remove(itemStack.getType().toString() + "$" + itemStack.getData().toString());
     }
 
     public static void GlobalNameStack(ItemStack itemStack, String name, Player player) {
-        MyNamesCore.getInstance().getConfigurationUtils().getData().set(player.getInventory().getItemInMainHand().getType().toString() + "$" + player.getInventory().getItemInMainHand().getData()
+        MyNamesCore.getInstance().getConfigurationUtils().getData().set(itemStack.getType().toString() + "$" + itemStack.getData()
                 + ".tag", name);
-        if (MyNamesCore.getInstance().getConfigurationUtils().getData().getString(itemStack.getType().toString() + "$" + itemStack.getData().toString() + ".default-name") == "") {
-            MyNamesCore.getInstance().getConfigurationUtils().getData().set(itemStack.getType().toString() + "$" + itemStack.getData().toString() + ".default-name", itemStack.getItemMeta().getDisplayName());
+        System.out.println("STRING IS [" + MyNamesCore.getInstance().getConfigurationUtils().getData().getString(itemStack.getType().toString() + "$" + itemStack.getData().toString() + ".default-name") + "]");
+        if (!HasTag(itemStack, "r1ckp1ckle.tagged")) {
+            if (MyNamesCore.getInstance().getConfigurationUtils().getData().getString(itemStack.getType().toString() + "$" + itemStack.getData().toString() + ".default-name") == null) {
+                MyNamesCore.getInstance().getConfigurationUtils().getData().set(itemStack.getType().toString() + "$" + itemStack.getData().toString() + ".default-name", itemStack.getItemMeta().getDisplayName());
+            } else if (MyNamesCore.getInstance().getConfigurationUtils().getData().getString(itemStack.getType().toString() + "$" + itemStack.getData().toString() + ".default-name").equals("")) {
+                MyNamesCore.getInstance().getConfigurationUtils().getData().set(itemStack.getType().toString() + "$" + itemStack.getData().toString() + ".default-name", itemStack.getItemMeta().getDisplayName());
+            }
         }
         MyNamesCore.getInstance().getConfigurationUtils().saveFiles();
         MyNamesCore.getInstance().getTweakedMats().add(itemStack.getType().toString() + "$" + itemStack.getData().toString());
         NameStack(itemStack, name, player);
+    }
+
+    public static boolean HasTag(ItemStack itemStack, String tag) {
+        net.minecraft.server.v1_14_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(itemStack);
+        if (nmsStack.hasTag()) {
+            return nmsStack.getTag().hasKey(tag);
+        }
+        return false;
     }
 }
