@@ -2,6 +2,7 @@ main: com.r1ckp1ckle.mynames.MyNamesCore
 name: MyNames
 version: 1.0
 author: r1ckp1ckle
+api-version: 1.14
 commands:
   tag:
     usage: /<command> <name>
