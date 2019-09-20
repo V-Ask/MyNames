@@ -15,7 +15,6 @@ public class GlobalTag implements CommandExecutor {
         if (!(commandSender instanceof Player)) return true;
         Player player = (Player) commandSender;
         player.getInventory().getItemInMainHand();
-        System.out.println(player.getInventory().getItemInMainHand().getType().toString());
         if (!player.getInventory().getItemInMainHand().getType().equals(Material.AIR)) {
             String joined = String.join(" ", strings);
             ItemNamingUtils.GlobalNameStack(player.getInventory().getItemInMainHand(), ChatColor.translateAlternateColorCodes('&', joined), player);
